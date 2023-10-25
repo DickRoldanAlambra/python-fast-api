@@ -44,15 +44,15 @@ async def get_searched_units(search_filter : str):
 async def add_unit(unitModel : Models.MstUnitModel.UnitBaseModel):
     try:
         # Create a new Unit instance using the data from the request
-        unitdb = Models.MstUnitModel.Unit(Unit=unitModel.Unit)
+        unit_to_add = Models.MstUnitModel.Unit(Unit=unitModel.Unit)
         # Add the unit to the session
-        session.add(unitdb)
+        session.add(unit_to_add)
         # Commit the unit to the database
         session.commit()
         # Refresh the unit to get the database-generated ID
-        session.refresh(unitdb)
+        session.refresh(unit_to_add)
         # Return the added unit
-        return unitdb
+        return unit_to_add
     except Exception as e:
         # Handle any potential errors, such as database exceptions
         session.rollback()  # Roll back the transaction
