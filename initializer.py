@@ -17,7 +17,7 @@ db_database = os.getenv("DB_DATABASE")
 db_username = os.getenv("DB_USERNAME")
 db_password = os.getenv("DB_PASSWORD")
 
-connection_string = "DRIVER={SQL Server};SERVER=localhost;DATABASE=easypos;UID=sa;PWD=P@ssword1234"
+connection_string = f"DRIVER=SQL Server;SERVER={db_server};DATABASE={db_database};UID={db_username};PWD={db_password}"
 connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
 
 # engine = create_engine(connection_string)
